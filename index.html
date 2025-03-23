@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Analysis: Dashboard and Admin Panel</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: #f9fafb;
+            color: #111827;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #1e3a8a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h2 {
+            color: #1e3a8a;
+            margin-top: 2rem;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+        }
+        th {
+            background-color: #f3f4f6;
+        }
+        pre {
+            background: #e5e7eb;
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Deep Analysis: Dashboard and Admin Panel</h1>
+</header>
+<div class="container">
+
+    <section class="section">
+        <h2>1. Data Structure and System Logic</h2>
+        <ul>
+            <li><strong>Process Integration:</strong> A unified platform that connects all company operations to avoid data fragmentation.</li>
+            <li><strong>System Modularity:</strong> Modular architecture for flexible expansion without affecting the core system.</li>
+            <li><strong>User Interface:</strong> Intuitive, adaptive design based on different user roles.</li>
+            <li><strong>Data Security:</strong> Encryption, multi-factor authentication, and access control.</li>
+            <li><strong>External Integrations:</strong> Accounting systems, document management, or 3rd party APIs.</li>
+        </ul>
+
+        <h3>1.1. Core Entities</h3>
+        <table>
+            <tr><th>Entity</th><th>Description</th></tr>
+            <tr><td>Projects</td><td>Construction/renovation objects the company is working on</td></tr>
+            <tr><td>Work Stages</td><td>Steps within a project (foundation, frame, finishing, etc.)</td></tr>
+            <tr><td>Employees</td><td>People assigned to tasks within projects</td></tr>
+            <tr><td>Tasks</td><td>Work items (e.g., "Pour concrete")</td></tr>
+            <tr><td>Equipment</td><td>List of tools and machinery with usage and depreciation</td></tr>
+            <tr><td>Finance</td><td>Expenses: materials, staff, equipment</td></tr>
+            <tr><td>Clients</td><td>Customers who requested the work</td></tr>
+            <tr><td>Documents</td><td>Blueprints, estimates, contracts</td></tr>
+            <tr><td>Project Status</td><td>Real-time state tracking of project progress</td></tr>
+            <tr><td>Logs</td><td>Audit trail of user actions</td></tr>
+        </table>
+
+        <h3>1.2. System Architecture</h3>
+        <ul>
+            <li><strong>Design System (Figma)</strong></li>
+            <li><strong>Frontend (Angular)</strong>: UI/UX, charts, tables, cards, routing, state-management (NGXS/NGRX)</li>
+            <li><strong>Backend (Laravel)</strong>: API, WebSockets, notification system</li>
+            <li><strong>Database (PostgreSQL/MySQL)</strong>: Structured schema with normalized relations</li>
+            <li><strong>Hosting & DevOps</strong>: AWS/DigitalOcean, Docker/Kubernetes, CI/CD pipeline</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>2. Dashboard Interface Design</h2>
+        <h3>2.1. Dashboard Main Screen</h3>
+        <ul>
+            <li><strong>Project Status:</strong> Gantt charts or visual trackers</li>
+            <li><strong>Projects List:</strong> Name, address, status, manager, deadlines</li>
+            <li><strong>Financial Overview:</strong> Budgets, stage/service costs, profit, forecast</li>
+            <li><strong>Employee Workload:</strong> Time tracking, task completion, availability</li>
+            <li><strong>Equipment Depreciation:</strong> Usage history, replacement prediction</li>
+            <li><strong>Deadlines & Scheduling:</strong> Delays, today/tomorrow tasks</li>
+            <li><strong>Unexpected Issues:</strong> Overdue tasks, incidents</li>
+        </ul>
+
+        <h3>2.2. Admin Panel Layout</h3>
+        <ul>
+            <li><strong>User Management:</strong> Role-based access and staff profiles</li>
+            <li><strong>Project Settings:</strong> Create, edit, archive, assign teams</li>
+            <li><strong>Finance Module:</strong> Invoicing, payments, reporting</li>
+            <li><strong>Reports & Analytics:</strong> Efficiency insights, bottleneck detection</li>
+            <li><strong>Projects:</strong> Detailed list of all projects</li>
+            <li><strong>Employees:</strong> Personnel management</li>
+            <li><strong>Documents:</strong> File storage</li>
+            <li><strong>Task Manager:</strong> Task board, status tracking</li>
+            <li><strong>Equipment:</strong> Inventory control</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h2>3. Process Algorithms and Development Steps</h2>
+
+        <h3>3.1. Functional Scenarios</h3>
+        <pre>
+Scenario 1: New Project Creation
+1. Admin sets up project with params (name, address, deadlines, budget)
+2. Auto-generates standard work stages
+3. Assigns staff and distributes tasks
+4. Client is notified
+      </pre>
+        <pre>
+Scenario 2: On-Site Progress Tracking
+1. Foreman updates stage progress (e.g., "Foundation poured")
+2. System recalculates timelines and forecast
+3. Materials missing? A task is created
+      </pre>
+        <pre>
+Scenario 3: Equipment Depreciation
+1. Usage time is logged per equipment use
+2. Approaching end-of-life triggers notification
+3. New tool is ordered by responsible user
+      </pre>
+
+        <h3>3.2. Development Stages</h3>
+        <ul>
+            <li><strong>Stage 1: Planning</strong> – UX/UI in Figma, ERD, define API endpoints</li>
+            <li><strong>Stage 2: Backend</strong> – Laravel + PostgreSQL, REST, WebSockets, auth</li>
+            <li><strong>Stage 3: Frontend</strong> – Angular + Tailwind, components, state management</li>
+            <li><strong>Stage 4: Testing</strong> – Unit & e2e tests, query optimization, bug fixing</li>
+            <li><strong>Stage 5: Deployment</strong> – AWS/DigitalOcean, CI/CD, monitoring</li>
+        </ul>
+    </section>
+
+</div>
+</body>
+</html>
